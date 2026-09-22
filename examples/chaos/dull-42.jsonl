@@ -1,0 +1,13 @@
+{"cell_count":5,"chain_hash":"dadcf3ea2a34d63e","dice_seed":42,"flagged_count":2,"kind":"HUNT/v1","panel_hash":"d5404f092ed0bbe9","producer":{"tool":"moth-corpus/chaos","version":"0.1.0"},"profile":"dull","row_hash":"1eadb6f228219ee1","schema_version":"1.0","start_pos":3,"ticks":12}
+{"cell_id":"math.c:math","chain_hash":"37ed4e66818e4220","dice_seed":42,"file":"math.c","fn":"math","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"eb66731a06c0e43a","tick":0}
+{"cell_id":"idle.c:idle","chain_hash":"85efd043df2e8f9f","dice_seed":42,"file":"idle.c","fn":"idle","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"e1a0eb714daa68c7","tick":1}
+{"cell_id":"math.c:math","chain_hash":"1888f155845d41ea","dice_seed":42,"file":"math.c","fn":"math","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"eb6d6f1a06c6fc1c","tick":2}
+{"cell_id":"echo.c:echo","chain_hash":"e0274a225644a128","dice_seed":42,"file":"echo.c","fn":"echo","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"4647ba586057362f","tick":3}
+{"cell_id":"route.c:route","chain_hash":"ec1cfb0670461f5c","dice_seed":42,"file":"route.c","fn":"route","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"73496ce7b633a9f8","tick":4}
+{"cell_id":"echo.c:echo","chain_hash":"39939b1d3855b378","dice_seed":42,"file":"echo.c","fn":"echo","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"465cbe5860699905","tick":5}
+{"cell_id":"math.c:math","chain_hash":"9d59ea126b2f0c96","dice_seed":42,"file":"math.c","fn":"math","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"eb7a6f1a06d18678","tick":6}
+{"cell_id":"idle.c:idle","chain_hash":"9b002a006e098428","dice_seed":42,"file":"idle.c","fn":"idle","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"e1b5ef714dbccb9d","tick":7}
+{"cell_id":"parse.c:parse","chain_hash":"52c1e76a0fc618d2","dice_seed":42,"file":"parse.c","fn":"parse","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"7a8bffccafb27628","tick":8}
+{"cell_id":"idle.c:idle","chain_hash":"5fa3fa0084134859","dice_seed":42,"file":"idle.c","fn":"idle","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"e1bbeb714dc1307f","tick":9}
+{"cell_id":"math.c:math","chain_hash":"2a3c98a40165c8ee","dice_seed":42,"file":"math.c","fn":"math","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"b5e4af3973a6d8a7","tick":10}
+{"cell_id":"idle.c:idle","chain_hash":"2f23b81767c33399","dice_seed":42,"file":"idle.c","fn":"idle","kind":"REFUSAL/v1","profile":"dull","reason":"starvation","row_hash":"0f89cb86f92692ba","tick":11}
