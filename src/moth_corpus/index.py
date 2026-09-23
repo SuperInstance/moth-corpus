@@ -23,7 +23,7 @@ def repo_commit(repo: Path) -> str:
             capture_output=True, text=True, timeout=15, check=True,
         )
         return out.stdout.strip()
-    except Exception:
+    except (subprocess.SubprocessError, OSError):
         return "0" * 40
 
 

@@ -1,7 +1,7 @@
 """Receipt chain: index -> write -> verify -> tamper-detect."""
 import json
 
-from moth_corpus import index, read_index, verify, write_index
+from moth_corpus import index, verify, write_index
 from moth_corpus.vendor_hashes import assert_pins, fnv1a_64_hex
 
 
@@ -46,7 +46,7 @@ def test_file_hash_matches_content(tmp_path):
     src = tmp_path / "a.rs"
     src.write_text("fn main() {}\n")
     rows = index(tmp_path, "rust")
-    surface = [r for r in rows if r["kind"] == "SURFACE/v1"][0]
+    surface = next(r for r in rows if r["kind"] == "SURFACE/v1")
     assert surface["file_hash"] == fnv1a_64_hex(src.read_bytes())
 
 
@@ -73,12 +73,13 @@ def test_insert_row_detected(tmp_path):
     forged["file"] = "forged.rs"
     lines.insert(1, json.dumps(forged, sort_keys=True))
     out.write_text("\n".join(lines) + "\n")
-    ok, errors = verify(out)
+    ok, _errors = verify(out)
     assert not ok
 
 
 def test_unsupported_lang_refused(tmp_path):
     import pytest
+
     from moth_corpus import CorpusError
     with pytest.raises(CorpusError):
         index(tmp_path, "cobol")
@@ -86,6 +87,7 @@ def test_unsupported_lang_refused(tmp_path):
 
 def test_missing_repo_refused():
     import pytest
+
     from moth_corpus import CorpusError
     with pytest.raises(CorpusError):
         index("/no/such/path/anywhere", "rust")

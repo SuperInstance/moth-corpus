@@ -10,10 +10,10 @@ from .vendor_hashes import PINNED_VECTORS, assert_pins, fnv1a_64, fnv1a_64_hex
 __version__ = "0.1.0"
 
 __all__ = [
-    "CorpusError",
     "GENESIS",
     "PINNED_VECTORS",
     "SUPPORTED_LANGS",
+    "CorpusError",
     "Surface",
     "__version__",
     "assert_pins",

@@ -8,7 +8,6 @@ The index IS the receipt; verify re-derives it from the files.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
 
 from .vendor_canonical import canonical_dumps
 from .vendor_hashes import fnv1a_64_hex
@@ -20,7 +19,7 @@ SUPPORTED_LANGS = ("rust", "c", "cpp", "js")
 @dataclass
 class Surface:
     file: str
-    fn: Optional[str]
+    fn: str | None
     line: int
     entry_points: list[str] = field(default_factory=list)
     taint_seeds: list[str] = field(default_factory=list)

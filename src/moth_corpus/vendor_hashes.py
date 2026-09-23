@@ -5,7 +5,6 @@
 from __future__ import annotations
 
 import hashlib
-from typing import Union
 
 FNV1A64_OFFSET = 0xCBF29CE484222325
 FNV1A64_PRIME = 0x100000001B3
@@ -13,12 +12,12 @@ MASK64 = 0xFFFFFFFFFFFFFFFF
 
 PINNED_VECTORS = [
     (b"", 0xCBF29CE484222325),
-    ("café Δ 日本語".encode("utf-8"), 0x24A555471370B18D),
+    ("café Δ 日本語".encode(), 0x24A555471370B18D),
     (b"hello", 0xA430D84680Aabd0B),
 ]
 
 
-def fnv1a_64(data: Union[bytes, bytearray, memoryview]) -> int:
+def fnv1a_64(data: bytes | bytearray | memoryview) -> int:
     h = FNV1A64_OFFSET
     for byte in bytes(data):
         h ^= byte
@@ -26,7 +25,7 @@ def fnv1a_64(data: Union[bytes, bytearray, memoryview]) -> int:
     return h
 
 
-def fnv1a_64_hex(data: Union[bytes, bytearray, memoryview]) -> str:
+def fnv1a_64_hex(data: bytes | bytearray | memoryview) -> str:
     return f"{fnv1a_64(data):016x}"
 
 
