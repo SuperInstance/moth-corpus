@@ -9,7 +9,6 @@ Contracts pinned here:
   (receipts, not dependencies — no moth-honest import anywhere here)
 - fixtures: examples/chaos/<profile>-<seed>.jsonl regenerate byte-identical
 """
-import json
 from pathlib import Path
 
 import pytest

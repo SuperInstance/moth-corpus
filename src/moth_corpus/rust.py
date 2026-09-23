@@ -38,7 +38,7 @@ def scan_file(path: Path, rel: str) -> list[Surface]:
     raw = path.read_bytes()
     try:
         text = raw.decode("utf-8", errors="replace")
-    except UnicodeDecodeError:
+    except Exception:  # noqa: BLE001 -- undecodable file: skip, never crash a scan
         return []
     lines = text.splitlines()
     surfaces: list[Surface] = []

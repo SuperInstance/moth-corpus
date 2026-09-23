@@ -35,8 +35,6 @@ sibling-repo import — receipts, not dependencies.
 """
 from __future__ import annotations
 
-from typing import Optional
-
 from .model import chain_rows
 from .vendor_canonical import canonical_dumps
 from .vendor_hashes import fnv1a_64_hex
@@ -169,7 +167,7 @@ def _walk(cells: list[dict], ticks: int, seed: int):
         yield tick, cells[pos]
 
 
-def generate(profile: str, cells: Optional[list[dict]] = None,
+def generate(profile: str, cells: list[dict] | None = None,
              ticks: int = 12, seed: int = 7) -> list[dict]:
     """Run an adversarial hunter profile over cells -> sealed receipt rows.
 
