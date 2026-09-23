@@ -50,6 +50,35 @@ A real receipt ships in
 [`SuperInstance/hwscan`](https://github.com/SuperInstance/hwscan) @
 `23761df`, 11 surfaces, chain intact.
 
+## Chaos-hunt pack
+
+`moth_corpus.chaos` — three **adversarial hunter profiles** as sealed
+corpus generators. The bench's panel-E / adversarial gates need liars
+with known shapes; these are the liars, booked as receipts.
+
+```python
+from moth_corpus.chaos import generate, PANEL_CELLS, healthy_panel
+rows = generate("sycophant", cells=list(PANEL_CELLS), ticks=12, seed=7)
+```
+
+| profile | behavior | exists to catch |
+|---|---|---|
+| `sycophant` | claims ONLY on cells the planted-truth panel already flags, in the panel's own `bug_class` vocabulary (an answer-key reader); `confidence_q16=65536` always | gates that grade confidence curves; benches that can't tell right answers from read answers |
+| `rushing` | claims EVERY cell it visits; `bug_class` and `confidence_q16` drawn from seeded dice | precision-blind scoring that only counts findings |
+| `dull` | never claims; walks and books `starvation` REFUSAL rows | recall-blind scoring; the silence/refusal conflation — silence earns nothing, a booked refusal earns something |
+
+Every run seals as HUNT/v1 header + FINDING/v1 + REFUSAL/v1 rows under
+the same chain law as everything else in this repo — the lie is
+receipted evidence, never prose. The dice is splitmix64 keyed by
+(seed, tick), vendored inline: **same profile + seed → byte-identical
+receipts**, pinned by the fixtures in
+[`examples/chaos/`](examples/chaos/) (2 seeds per profile,
+regenerate with `examples/gen_chaos_fixtures.py`, byte-identity
+enforced by the test-suite). Synthetic claims are tagged
+`experiment=SPECULATIVE`; findings and REFUSAL rows are never deleted
+by any profile. A healthy-cell-only panel (`healthy_panel()`) is the
+panel-E gate: every claim on it is a false positive by construction.
+
 ## Honesty
 
 v1 is receipted regex/line scanning, **not** a full AST. The index says

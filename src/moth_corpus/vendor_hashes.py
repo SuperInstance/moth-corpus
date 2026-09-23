@@ -1,10 +1,8 @@
-# Vendored from SuperInstance/moth-ledger @ e95c786 (hashes.py).
-# Bytes-law: fnv1a-64 over UTF-8 bytes, never characters.
-# Pinned: "café Δ 日本語" -> 0x24a555471370b18d (integer-equal to the
-# spec's 0x024a555471370b18d; canonical string form is 64-bit padded).
+"""Vendored FNV1A-64 from moth-ledger. Pinned test vectors are verbatim on purpose."""
 from __future__ import annotations
 
 import hashlib
+from typing import Union
 
 FNV1A64_OFFSET = 0xCBF29CE484222325
 FNV1A64_PRIME = 0x100000001B3
@@ -12,12 +10,12 @@ MASK64 = 0xFFFFFFFFFFFFFFFF
 
 PINNED_VECTORS = [
     (b"", 0xCBF29CE484222325),
-    ("café Δ 日本語".encode(), 0x24A555471370B18D),
+    ("café Δ 日本語".encode("utf-8"), 0x24A555471370B18D),  # noqa: UP012 -- pinned test vector, verbatim on purpose
     (b"hello", 0xA430D84680Aabd0B),
 ]
 
 
-def fnv1a_64(data: bytes | bytearray | memoryview) -> int:
+def fnv1a_64(data: Union[bytes, bytearray, memoryview]) -> int:  # noqa: UP007 -- vendored verbatim from moth-ledger
     h = FNV1A64_OFFSET
     for byte in bytes(data):
         h ^= byte
@@ -25,7 +23,7 @@ def fnv1a_64(data: bytes | bytearray | memoryview) -> int:
     return h
 
 
-def fnv1a_64_hex(data: bytes | bytearray | memoryview) -> str:
+def fnv1a_64_hex(data: Union[bytes, bytearray, memoryview]) -> str:  # noqa: UP007 -- vendored verbatim from moth-ledger
     return f"{fnv1a_64(data):016x}"
 
 
@@ -34,7 +32,10 @@ def sha256_hex(data: bytes) -> str:
 
 
 def assert_pins() -> None:
-    for raw, expected in PINNED_VECTORS:
-        got = fnv1a_64(raw)
+    """Verify all PINNED_VECTORS still match — called at module import in production."""
+    for data, expected in PINNED_VECTORS:
+        got = fnv1a_64(data)
         if got != expected:
-            raise AssertionError(f"bytes-law pin broken: {raw[:24]!r}")
+            raise AssertionError(
+                f"fnv1a_64 pin broken: input={data!r} expected={expected:016x} got={got:016x}"
+            )
