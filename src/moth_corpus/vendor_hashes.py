@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import hashlib
-from typing import Union  # noqa: UP035 -- vendored verbatim from moth-ledger
+from typing import Union
 
 FNV1A64_OFFSET = 0xCBF29CE484222325
 FNV1A64_PRIME = 0x100000001B3
